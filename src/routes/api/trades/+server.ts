@@ -2,7 +2,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import axios from 'axios';
 import { env } from '$env/dynamic/private';
-import { Trade } from '../../../utils/schemas/trades';
+import { AddTrade } from '../../../utils/schemas/trades';
 import { ZodError } from 'zod';
 
 export const GET: RequestHandler = async () => {
@@ -18,7 +18,7 @@ export const GET: RequestHandler = async () => {
 export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const post = await request.json();
-		Trade.parse(post);
+		AddTrade.parse(post);
 		const response = await axios.post(env.DB_ENDPOINT + '/trades', post);
 		return json(response.data);
 	} catch (e: unknown) {

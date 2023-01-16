@@ -164,6 +164,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@kurkle/color@^0.3.0":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
+  integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
+
 "@material/animation@^14.0.0":
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@material/animation/-/animation-14.0.0.tgz#f23fbe38deb6a48829dcdb0b7580017a4217e94b"
@@ -253,6 +258,23 @@
     "@material/dom" "^14.0.0"
     "@material/feature-targeting" "^14.0.0"
     "@material/rtl" "^14.0.0"
+
+"@material/icon-button@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/@material/icon-button/-/icon-button-14.0.0.tgz#cdfc7e7b967abe81d537fd7db916c9113c3a09b7"
+  integrity sha512-wHMqzm7Q/UwbWLoWv32Li1r2iVYxadIrwTNxT0+p+7NdfI3lEwMN3NoB0CvoJnHTljjXDzce0KJ3nZloa0P0gA==
+  dependencies:
+    "@material/base" "^14.0.0"
+    "@material/density" "^14.0.0"
+    "@material/dom" "^14.0.0"
+    "@material/elevation" "^14.0.0"
+    "@material/feature-targeting" "^14.0.0"
+    "@material/focus-ring" "^14.0.0"
+    "@material/ripple" "^14.0.0"
+    "@material/rtl" "^14.0.0"
+    "@material/theme" "^14.0.0"
+    "@material/touch-target" "^14.0.0"
+    tslib "^2.1.0"
 
 "@material/line-ripple@^14.0.0":
   version "14.0.0"
@@ -478,6 +500,17 @@
   dependencies:
     "@material/floating-label" "^14.0.0"
     "@smui/common" "^7.0.0-beta.0"
+    svelte2tsx "^0.5.12"
+
+"@smui/icon-button@^7.0.0-beta.0":
+  version "7.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@smui/icon-button/-/icon-button-7.0.0-beta.0.tgz#78a5b59aef8987cb7c601d238cbf3d46b96f8dc4"
+  integrity sha512-XBcZwcRh3VmOXbKsR9dv32gBZmvTCNQc+T/XhF3PDQRjGvE4q2VW8ZByB0IB47xpmWqJvfPb32DhJuR+Iffncg==
+  dependencies:
+    "@material/density" "^14.0.0"
+    "@material/icon-button" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.0"
+    "@smui/ripple" "^7.0.0-beta.0"
     svelte2tsx "^0.5.12"
 
 "@smui/line-ripple@^7.0.0-beta.0":
@@ -1150,6 +1183,13 @@ chalk@^4.0.0, chalk@^4.1.2:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chart.js@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.1.2.tgz#04e3ba63dbc36a2af21caf46ae31940514cb644a"
+  integrity sha512-9L1w6WLPq6ztiWVVOYtDtpo0CUsBKDWPrUEdwChAyzczaikqeSwNKEv3QpJ7EO4ICcLSi6UDVhgvcnUhRJidRA==
+  dependencies:
+    "@kurkle/color" "^0.3.0"
 
 check-error@^1.0.2:
   version "1.0.2"
