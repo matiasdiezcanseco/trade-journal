@@ -3,8 +3,9 @@
 	import { fetchTrades } from '../../services/trades';
 	import { goto } from '$app/navigation';
 	import { createQuery } from '@tanstack/svelte-query';
-	import Chart from '../../components/organisms/chart.svelte';
+	import HistoryChart from '../../components/organisms/history-chart.svelte';
 	import TradesTable from '../../components/organisms/trades-table.svelte';
+	import TradesData from '../../components/molecules/trades-data.svelte';
 
 	const trades = createQuery({ queryKey: ['trades'], queryFn: () => fetchTrades() });
 </script>
@@ -16,7 +17,8 @@
 		<p>Error...</p>
 	{:else if $trades.isSuccess && $trades.data}
 		<div class="space-y-4">
-			<Chart />
+			<TradesData trades={$trades.data} />
+			<HistoryChart trades={$trades.data} />
 			<TradesTable trades={$trades.data} />
 			<div>
 				<Button variant="raised" on:click={() => goto(`/trades/add`)}>

@@ -18,7 +18,8 @@
 			setups,
 			side,
 			size,
-			date: dayjs(date).toISOString()
+			date: dayjs(date).toISOString(),
+			status
 		});
 	};
 
@@ -29,10 +30,11 @@
 		exit: 0,
 		setups: '',
 		side: 'LONG',
-		size: 0
+		size: 0,
+		status: 'OPEN'
 	};
 
-	let { symbol, entry, exit, setups, side, size } = trade;
+	let { symbol, entry, exit, setups, side, size, status } = trade;
 	let date = trade ? new Date(trade.date as string) : new Date();
 
 	export let title: string;
@@ -47,6 +49,17 @@
 		<div>
 			<p class="text-gray-400">Date</p>
 			<DateInput bind:value={date} closeOnSelection />
+		</div>
+		<div>
+			<Autocomplete
+				style="width: 100%;"
+				options={['OPEN', 'CLOSED']}
+				textfield$variant="standard"
+				bind:value={status}
+				label="Status"
+				name="status"
+				id="status"
+			/>
 		</div>
 		<div>
 			<Textfield
@@ -123,6 +136,7 @@
 				id="setups"
 			/>
 		</div>
+
 		<div>
 			<Button variant="raised">
 				<Label>{buttonLabel}</Label>

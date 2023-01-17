@@ -2,6 +2,8 @@ import { z } from 'zod';
 
 const side = ['LONG', 'SHORT'] as const;
 
+const status = ['OPEN', 'CLOSED'] as const;
+
 export const EditTrade = z.object({
 	date: z.string().datetime({ precision: 3 }).optional(),
 	symbol: z.string().min(1).max(10).optional(),
@@ -9,7 +11,8 @@ export const EditTrade = z.object({
 	exit: z.number().min(0).optional(),
 	size: z.number().min(0).optional(),
 	side: z.enum(side).optional(),
-	setups: z.string().optional()
+	setups: z.string().optional(),
+	status: z.enum(status).optional()
 });
 
 export const AddTrade = z.object({
@@ -19,7 +22,8 @@ export const AddTrade = z.object({
 	exit: z.number().min(0),
 	size: z.number().min(0),
 	side: z.enum(side),
-	setups: z.string()
+	setups: z.string(),
+	status: z.enum(status)
 });
 
 export type EditTrade = z.infer<typeof EditTrade>;

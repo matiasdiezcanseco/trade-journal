@@ -9,6 +9,8 @@
 	import { deleteTrade } from '../../services/trades';
 	import { createMutation } from '@tanstack/svelte-query';
 	import { queryClient } from '../../utils/query-client';
+	import { calculateTradeProfit } from '../../utils/profit';
+	import { formatCurrency } from '../../utils/format';
 
 	export let trades: Trade[] = [];
 
@@ -30,6 +32,12 @@
 			accessorKey: 'symbol',
 			id: 'symbol',
 			header: () => 'Symbol',
+			cell: (info) => info.getValue()
+		},
+		{
+			accessorKey: 'status',
+			id: 'status',
+			header: () => 'Status',
 			cell: (info) => info.getValue()
 		},
 		{
@@ -103,6 +111,7 @@
 						{/if}
 					</th>
 				{/each}
+				<th class="py-1 px-2">Profit</th>
 				<th class="py-1 px-2">Edit</th>
 			</tr>
 		{/each}
@@ -115,7 +124,18 @@
 						<svelte:component this={flexRender(cell.column.columnDef.cell, cell.getContext())} />
 					</td>
 				{/each}
-				<td>
+				<td class="py-1 px-2">
+					{formatCurrency(
+						calculateTradeProfit({
+							entry: row.getValue('entry'),
+							exit: row.getValue('exit'),
+							side: row.getValue('side'),
+							size: row.getValue('size'),
+							status: row.getValue('status')
+						})
+					)}
+				</td>
+				<td class="py-1 px-2">
 					<IconButton
 						class="material-icons"
 						on:click={() => goto(`/trades/edit/${row.getValue('id')}`)}
